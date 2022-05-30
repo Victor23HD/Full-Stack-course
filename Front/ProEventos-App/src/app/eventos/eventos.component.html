@@ -1,11 +1,64 @@
-<p>Eventos Importantes!</p>
-
+<p [style.left.px]="positionsubTitle" style="position: relative;">Eventos Importantes!</p>
+<hr>
 <!-- Loop em NodeJs -->
 
-<div *ngFor="let evento of eventos;">
-
- <b>Tema:</b> {{evento.tema}}<p>
- <b>Local:</b> {{evento.local}}<br>
- <b>Data Evento:</b> {{evento.dataEvento}}<p>
- <hr>
+<div class="form-inline">
+  <div class="form-gruop mb-2">
+    <h4 class="mr-2" style="position: relative; left: -80px; top: 30px;">Filtro: </h4>
+  <input type="text"
+  class="form-control mr-2"
+  style="left: 70px; position:relative; top: -10px;"
+  placeholder="buscar"
+  [(ngModel)]="listFilter">
 </div>
+</div>
+  <table class="table tablet-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>
+          <button class="btn btn-outline-light btn-sm" (click)="showImg()" style="position: relative; left: -40px;">
+           {{showImg ? 'Mostrar' : 'Exibir'}}
+          </button>
+        </th>
+        <th>Tema</th>
+        <th>Local</th>
+        <th>Data</th>
+        <th>Qtd</th>
+        <th>Lote</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="eventos && eventos.length">
+      <tr *ngFor="let evento of filteredEvents;">
+         <td> {{evento.eventoId}} </td>
+         <td>
+
+         <img [collapse]="changeImg"
+         [isAnimated]="true"
+         src="/assets/{{evento.imagemURL}}"
+         [style.width.px] = "widthImg"
+         [style.margin.px] = "marginImg"
+         >
+
+         </td>
+         <td> {{evento.tema}} </td>
+         <td> {{evento.local}} </td>
+         <td> {{evento.dataEvento}} </td>
+         <td> {{evento.qtdPessoas}} </td>
+         <td> {{evento.lote}} </td>
+         <td></td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="!eventos.length">
+      <tr>
+        <td colspan="8" class="text-center">
+          <h4> Nenhum evento encontrado</h4>
+        </td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+
+

@@ -1,13 +1,18 @@
+<app-nav></app-nav>
+
 <div class="container text-center">
 
-  <h1>Eventos</h1>
+  <p><p>
+  <h1 style="position: relative;"
+  [style.left.px] = "positionTitle"
+
+  >
+    Eventos
+  </h1>
   <app-eventos></app-eventos>
   <!--Puxa o app de do eventos-->
 
-  <h1>Palestrantes</h1>
-  <app-Palestrantes></app-Palestrantes>
   <!--Puxa o app de Palestrantes-->
   <router-outlet></router-outlet>
-
 </div>
 

@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  positionTitle: number = -490;
   title = 'ProEventos-App';
+
 }
